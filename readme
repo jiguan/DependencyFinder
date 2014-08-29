@@ -1,0 +1,22 @@
+Author: Ricky Jianqing Guan
+Email: jiguan@indiana.edu
+Date: Aug.27
+Description: 
+This function is to find out the closure of each functional dependency 
+(The closure of F in R (denoted F+) is the set of all FD’s in that are logically implied by F, wiki)
+
+Time complexity: O(n^2). 
+Worst case: 
+For the case:
+A-> B C D E
+B-> C D E
+C-> D E
+D-> E
+If the program starts from A to D. It will go over every node twice at most. For example, when the program analyzes the B node, it cannot burrow the result from A node. 
+
+Possible way to improve the time complexity:
+1. First find out the node depends on nothing. Here is E. Push E->null into new dependency map
+2. Find out the node who ONLY depends on the nodes we have explored, here is D. push it to the map.
+3. Repeat step 2. Until we visit all node. 
+
+However, this method has too many situations to be considered.
